@@ -1,3 +1,7 @@
+
+
+
+
 function getComputerChoice(params) {
     randomNum = Math.floor(Math.random() * 3);
 
@@ -11,4 +15,11 @@ function getComputerChoice(params) {
  }
 
  console.log(getComputerChoice());
+
+
+ const playerInput = prompt("choice one: ").toLowerCase();
+
+ console.log(playerInput);
+
+ 
 
