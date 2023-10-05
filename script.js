@@ -2,7 +2,7 @@
 
 
 
-function getComputerChoice(params) {
+function getComputerChoice() {
     randomNum = Math.floor(Math.random() * 3);
 
     if (randomNum === 0){
@@ -14,41 +14,76 @@ function getComputerChoice(params) {
     }
  }
 
-
- const computerSelection = getComputerChoice().toLowerCase();
-
- console.log(computerSelection);
-
- // get game player choice section
-
- const playerSelection = prompt("choice one: ").toLowerCase();
-
- console.log(playerSelection);
-
-
  function playRound(playerSelection, computerSelection) {
     //compare both side to deterrmine the game winner
     if (playerSelection === computerSelection) {
-        return "Draw!!! no winner, try again"
+        return "draw"
     }else if (playerSelection === "rock" && computerSelection === "scissors") {
-        return "you win the game! Rock beat Scissors";
+        return "win";
     }else if (playerSelection === "paper" && computerSelection === "rock"){
-        return "you win the game! Paper beat Rock";
+        return "win";
     }else if (playerSelection === "scissors" && computerSelection === "paper"){
-        return "you win the game! Scissors beat Paper";
-        //player winn ssection ends here
+        return "win";
+        //player win section ends here
     }else if (playerSelection === "scissors" && computerSelection === "rock") {
-        return "you loss the game! Rock beat Scissors";
+        return "loss";
     }else if (playerSelection === "rock" && computerSelection === "paper"){
-        return "you loss the game! Paper beat Rock";
+        return "loss";
     }else if (playerSelection === "paper" && computerSelection === "scissors"){
-        return "you loss the game! Scissors beat Paper";
+        return "loss";
     }else {
-        return "Game Over";
+        return "wrong choice";
     }
  }
 
- console.log(playRound(playerSelection, computerSelection));
+
+ 
+ 
+
+
+
+
+let playerScore = 0;
+let computerScore = 0;
+let round = 0; 
+
+function game() {
+  const computerSelection = getComputerChoice().toLocaleLowerCase();
+  console.log(`Computer choose: ${computerSelection}`);
+  const playerSelection = prompt("Make your wise choice: ").toLocaleLowerCase();
+  console.log(`You choose: ${playerSelection}`);
+
+  const result = playRound(playerSelection, computerSelection);
+
+  console.log(`Round ${round + 1} result is: ${result}`);
+
+  if (round < 5){
+    if (result === "win"){
+      playerScore++;
+      console.log(`your win your score is: ${playerScore}`);
+    }else if(result == "loss"){
+      computerScore++;
+      console.log(`You loss, computer score: ${computerScore}`);
+    }
+
+    round++;
+    game();
+    
+  }else {
+    if (playerScore > computerScore){
+      console.log(`Your total score is ${playerScore} and computer total score is ${computerScore} : you WIN!!!`);
+    }else if (computerScore > playerScore){
+      console.log(`Your total score is ${playerScore} and computer total score is ${computerScore} : you LOSS!`);
+    }else{
+      console.log(`Your total score is ${playerScore} and computer total score is ${computerScore} : it is a TIE!`);
+    }
+  }
+  console.log("game over");
+}
+
+
+game();
+
 
 
 
