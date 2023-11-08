@@ -67,21 +67,24 @@ function scoreUpdate(){
     computerScoreResult.textContent = `Computer Score: ${computerScore}`;
 }
 
-
 function playerButton(playerSelection){
     const computerSelection = getComputerChoice();
     const result = playRound(playerSelection, computerSelection);
     choiceUpdate(playerSelection, computerSelection, result)
 
-    if (result === 'win') {
-        playerScore++;
-      } else if (result === 'loss') {
-        computerScore++;
-      }
-      round++;
-      scoreUpdate();
-      game();
+    if(round < 5){
+        if (result === 'win') {
+            playerScore++;
+          } else if (result === 'loss') {
+            computerScore++;
+          }
+          round++;
+          scoreUpdate();
+    }else{
+        game();
+    }
 }
+
 
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
@@ -102,16 +105,15 @@ scissors.addEventListener('click', () => {
 
 
 function game() {
+        const winnerAnnouncement = document.querySelector('#finalWinner');
 
-    const winnerAnnouncement = document.querySelector('#finalWinner');
-
-    if (playerScore > computerScore) {
-        winnerAnnouncement.textContent = `You win the Game with ${playerScore} point`;
-    }else if (playerScore < computerScore) {
-        winnerAnnouncement.textContent = `Computer wins the Game with ${computerScore} point`;
-    }else{
-        winnerAnnouncement.textContent = "Its a Tie";
-    }
+        if (playerScore > computerScore) {
+            winnerAnnouncement.textContent = `You win the Game with ${playerScore} point`;
+        }else if (playerScore < computerScore) {
+            winnerAnnouncement.textContent = `Computer wins the Game with ${computerScore} point`;
+        }else{
+            winnerAnnouncement.textContent = "Its a Tie";
+        }  
 }
   
 
