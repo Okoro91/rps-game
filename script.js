@@ -42,34 +42,37 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
+function textUpdate(playerSelection, computerSelection, result){
+    const player = document.querySelector('#player');
+    player.textContent = `You Chose: ${playerSelection}`
+
+    const computer = document.querySelector('#computer');
+    computer.textContent = `Computer choose: ${computerSelection}`
+
+    const resultDiv = document.querySelector('#result');
+    resultDiv.textContent = `Round result: ${result}`;
+}
+
 rock.addEventListener('click', () => {
     const playerSelection = 'rock';
     const computerSelection = getComputerChoice();
     const result = playRound(playerSelection, computerSelection);
-    console.log(`Computer choose: ${computerSelection}`);
-    console.log(`you choose: ${playerSelection}`);
-    console.log(`the result is: ${result}`);
+    textUpdate(playerSelection, computerSelection, result)
 })
 
 paper.addEventListener('click', () => {
     const playerSelection = 'paper';
     const computerSelection = getComputerChoice();
     const result = playRound(playerSelection, computerSelection);
-    console.log(`Computer choose: ${computerSelection}`);
-    console.log(`you choose: ${playerSelection}`);
-    console.log(`the result is: ${result}`);
+    textUpdate(playerSelection, computerSelection, result)
 })
 
 scissors.addEventListener('click', () => {
     const playerSelection = 'scissors';
     const computerSelection = getComputerChoice();
     const result = playRound(playerSelection, computerSelection);
-    console.log(`Computer choose: ${computerSelection}`);
-    console.log(`you choose: ${playerSelection}`);
-    console.log(`the result is: ${result}`);
+    textUpdate(playerSelection, computerSelection, result)
 })
-
-
 
 
 
