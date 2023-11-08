@@ -38,11 +38,7 @@ function getComputerChoice() {
 
  
 
-const rock = document.querySelector('#rock');
-const paper = document.querySelector('#paper');
-const scissors = document.querySelector('#scissors');
-
-function textUpdate(playerSelection, computerSelection, result){
+function choiceUpdate(playerSelection, computerSelection, result){
     const player = document.querySelector('#player');
     player.textContent = `You Chose: ${playerSelection}`
 
@@ -53,74 +49,73 @@ function textUpdate(playerSelection, computerSelection, result){
     resultDiv.textContent = `Round result: ${result}`;
 }
 
-rock.addEventListener('click', () => {
-    const playerSelection = 'rock';
-    const computerSelection = getComputerChoice();
-    const result = playRound(playerSelection, computerSelection);
-    textUpdate(playerSelection, computerSelection, result)
-})
-
-paper.addEventListener('click', () => {
-    const playerSelection = 'paper';
-    const computerSelection = getComputerChoice();
-    const result = playRound(playerSelection, computerSelection);
-    textUpdate(playerSelection, computerSelection, result)
-})
-
-scissors.addEventListener('click', () => {
-    const playerSelection = 'scissors';
-    const computerSelection = getComputerChoice();
-    const result = playRound(playerSelection, computerSelection);
-    textUpdate(playerSelection, computerSelection, result)
-})
 
 
-
-
-
-/*
-
+let round = 0;
 let playerScore = 0;
 let computerScore = 0;
-let round = 0; 
 
 
-function game() {
-  const computerSelection = getComputerChoice().toLocaleLowerCase();
-  console.log(`Computer choose: ${computerSelection}`);
-  const playerSelection = prompt("Make your wise choice: ").toLocaleLowerCase();
-  console.log(`You choose: ${playerSelection}`);
-
-  const result = playRound(playerSelection, computerSelection);
-
-  console.log(`Round ${round + 1} result is: ${result}`);
-
-  if (round < 5){
-    if (result === "win"){
-      playerScore++;
-      console.log(`your win your score is: ${playerScore}`);
-    }else if(result == "loss"){
-      computerScore++;
-      console.log(`You loss, computer score: ${computerScore}`);
-    }
-
-    round++;
-    game();
+function scoreUpdate(){
+    const roundPlayed = document.querySelector('#round')
+    roundPlayed.textContent = `This is round: ${round}`;
     
-  }else {
-    if (playerScore > computerScore){
-      console.log(`Your total score is ${playerScore} and computer total score is ${computerScore} : you WIN!!!`);
-    }else if (computerScore > playerScore){
-      console.log(`Your total score is ${playerScore} and computer total score is ${computerScore} : you LOSS!`);
-    }else{
-      console.log(`Your total score is ${playerScore} and computer total score is ${computerScore} : it is a TIE!`);
-    }
-  }
+    const playerScoreResult = document.querySelector('#playerScore');
+    playerScoreResult.textContent = `Player Score: ${playerScore}`;
+    
+    const computerScoreResult = document.querySelector('#computerScore');
+    computerScoreResult.textContent = `Computer Score: ${computerScore}`;
 }
 
 
-game();
-*/
+function playerButton(playerSelection){
+    const computerSelection = getComputerChoice();
+    const result = playRound(playerSelection, computerSelection);
+    choiceUpdate(playerSelection, computerSelection, result)
+
+    if (result === 'win') {
+        playerScore++;
+      } else if (result === 'loss') {
+        computerScore++;
+      }
+      round++;
+      scoreUpdate();
+      game();
+}
+
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+rock.addEventListener('click', () => {
+    playerButton('rock')
+})
+
+paper.addEventListener('click', () => {
+    playerButton('paper');
+})
+
+scissors.addEventListener('click', () => {
+    playerButton('scissors');
+})
+
+
+
+function game() {
+
+    const winnerAnnouncement = document.querySelector('#finalWinner');
+
+    if (playerScore > computerScore) {
+        winnerAnnouncement.textContent = `You win the Game with ${playerScore} point`;
+    }else if (playerScore < computerScore) {
+        winnerAnnouncement.textContent = `Computer wins the Game with ${computerScore} point`;
+    }else{
+        winnerAnnouncement.textContent = "Its a Tie";
+    }
+}
+  
+
+
 
 
 
