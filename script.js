@@ -1,18 +1,18 @@
 
 
-
-
 function getComputerChoice() {
     randomNum = Math.floor(Math.random() * 3);
 
     if (randomNum === 0){
-        return "Rock";
+        return "rock";
     }else if (randomNum === 1){
-        return "Paper";
+        return "paper";
     } else {
-        return "Scissors";
+        return "scissors";
     }
  }
+
+ 
 
  function playRound(playerSelection, computerSelection) {
     //compare both side to deterrmine the game winner
@@ -36,16 +36,51 @@ function getComputerChoice() {
     }
  }
 
-
- 
  
 
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+rock.addEventListener('click', () => {
+    const playerSelection = 'rock';
+    const computerSelection = getComputerChoice();
+    const result = playRound(playerSelection, computerSelection);
+    console.log(`Computer choose: ${computerSelection}`);
+    console.log(`you choose: ${playerSelection}`);
+    console.log(`the result is: ${result}`);
+})
+
+paper.addEventListener('click', () => {
+    const playerSelection = 'paper';
+    const computerSelection = getComputerChoice();
+    const result = playRound(playerSelection, computerSelection);
+    console.log(`Computer choose: ${computerSelection}`);
+    console.log(`you choose: ${playerSelection}`);
+    console.log(`the result is: ${result}`);
+})
+
+scissors.addEventListener('click', () => {
+    const playerSelection = 'scissors';
+    const computerSelection = getComputerChoice();
+    const result = playRound(playerSelection, computerSelection);
+    console.log(`Computer choose: ${computerSelection}`);
+    console.log(`you choose: ${playerSelection}`);
+    console.log(`the result is: ${result}`);
+})
 
 
+
+
+
+
+
+/*
 
 let playerScore = 0;
 let computerScore = 0;
 let round = 0; 
+
 
 function game() {
   const computerSelection = getComputerChoice().toLocaleLowerCase();
@@ -78,12 +113,11 @@ function game() {
       console.log(`Your total score is ${playerScore} and computer total score is ${computerScore} : it is a TIE!`);
     }
   }
-  console.log("game over");
 }
 
 
 game();
-
+*/
 
 
 
