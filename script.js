@@ -40,18 +40,18 @@ function getComputerChoice() {
 
 function choiceUpdate(playerSelection, computerSelection, result){
     const player = document.querySelector('#player');
-    player.textContent = `You Chose: ${playerSelection}`
+    player.textContent = `You Choose: ${playerSelection}`
 
     const computer = document.querySelector('#computer');
-    computer.textContent = `Computer choose: ${computerSelection}`
+    computer.textContent = `Computer Choose: ${computerSelection}`
 
     const resultDiv = document.querySelector('#result');
     if(result === "win"){
-        resultDiv.textContent = `Round result: You ${result}, ${playerSelection} beat ${computerSelection}`;
+        resultDiv.textContent = `Round Result: You ${result}, ${playerSelection} beat ${computerSelection}`;
     }else if (result === "loss"){
-        resultDiv.textContent = `Round result: You ${result}, ${computerSelection}  beat ${playerSelection}`;
+        resultDiv.textContent = `Round Result: You ${result}, ${computerSelection}  beat ${playerSelection}`;
     }else{
-        resultDiv.textContent = `Round result: ${result}`;
+        resultDiv.textContent = `Round Result: ${result}`;
     }
     
 }
@@ -89,6 +89,8 @@ function playerButton(playerSelection){
           scoreUpdate();
     }else{
         game();
+        choiceUpdate('', '', '');
+        resetButton.textContent = "Play Again";
     }
 }
 

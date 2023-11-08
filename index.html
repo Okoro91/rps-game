@@ -4,23 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="round"></div>
+    <header>
+        <h1>M.I Okoro Game Hub</h1>
+        <h3>Rock Paper Scissors Game</h3>
+        <p>Try your Luck with the computer, you have only 5 round</p>
+    </header>
+    <main id="game-container">
+        <div class="score-board">
+            <div id="round"></div>
+            <div class="pc-score">
+                <div id="playerScore"></div>
+                <div id="computerScore"></div>
+            </div>
+        </div>
 
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
-    
-    <div id="player"></div>
-    <div id="computer"></div>
-    <div id="result"></div>
-
-    <div id="playerScore"></div>
-    <div id="computerScore"></div>
-    <div id="finalWinner"></div>
-
-    <button id="reset">Reset</button>
+        <div id="result"></div>
+        <div class="gamebutton">
+            <button id="rock">
+                <div class="image-container">
+                    <img src="./image/rock.png" alt="" class="rps-image">
+                    <img src="./image/shadow.png" alt="rps image shadow" class="shadow">
+                </div>
+            </button>
+            <button id="paper">
+                <div class="image-container">
+                    <img src="./image/paper.png" alt="" class="rps-image">
+                    <img src="./image/shadow.png" alt="rps image shadow" class="shadow">
+                </div>
+            </button>
+            <button id="scissors">
+                <div class="image-container">
+                    <img src="./image/scissors.png" alt="" class="rps-image">
+                    <img src="./image/shadow.png" alt="rps image shadow" class="shadow">
+                </div>
+            </button>
+        </div>
+        
+        <div class="pc-choice">
+            <div id="player"></div>
+            <div id="computer"></div>
+        </div>
+        
+        <div class="game-end">
+            <div id="finalWinner"></div>
+            <button id="reset">Reset</button>
+        </div>
+        
+    </main>
+    <footer>
+        <p>visit for more exiting game</p>
+    </footer>
 </body>
 </html>
