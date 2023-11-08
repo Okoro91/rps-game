@@ -46,7 +46,14 @@ function choiceUpdate(playerSelection, computerSelection, result){
     computer.textContent = `Computer choose: ${computerSelection}`
 
     const resultDiv = document.querySelector('#result');
-    resultDiv.textContent = `Round result: ${result}`;
+    if(result === "win"){
+        resultDiv.textContent = `Round result: You ${result}, ${playerSelection} beat ${computerSelection}`;
+    }else if (result === "loss"){
+        resultDiv.textContent = `Round result: You ${result}, ${computerSelection}  beat ${playerSelection}`;
+    }else{
+        resultDiv.textContent = `Round result: ${result}`;
+    }
+    
 }
 
 
@@ -117,6 +124,23 @@ function game() {
 }
   
 
+const resetButton = document.querySelector('#reset');
+
+function resetGame() {
+    round = 0;
+    playerScore = 0;
+    computerScore = 0;
+    playerButton('');
+    choiceUpdate('', '', '');
+
+    const winnerAnnouncement = document.querySelector('#finalWinner');
+    winnerAnnouncement.textContent = "";
+}
+
+
+resetButton.addEventListener('click', () => {
+    resetGame();
+});
 
 
 
