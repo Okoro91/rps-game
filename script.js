@@ -17,7 +17,7 @@ function getComputerChoice() {
  function playRound(playerSelection, computerSelection) {
     //compare both side to deterrmine the game winner
     if (playerSelection === computerSelection) {
-        return "draw"
+        return "draw!!"
     }else if (playerSelection === "rock" && computerSelection === "scissors") {
         return "win";
     }else if (playerSelection === "paper" && computerSelection === "rock"){
@@ -47,9 +47,9 @@ function choiceUpdate(playerSelection, computerSelection, result){
 
     const resultDiv = document.querySelector('#result');
     if(result === "win"){
-        resultDiv.textContent = `Round Result: You ${result}, ${playerSelection} beat ${computerSelection}`;
+        resultDiv.textContent = `Round Result: You ${result}! ${playerSelection} beat ${computerSelection}`;
     }else if (result === "loss"){
-        resultDiv.textContent = `Round Result: You ${result}, ${computerSelection}  beat ${playerSelection}`;
+        resultDiv.textContent = `Round Result: You ${result}! ${computerSelection}  beat ${playerSelection}`;
     }else{
         resultDiv.textContent = `Round Result: ${result}`;
     }
